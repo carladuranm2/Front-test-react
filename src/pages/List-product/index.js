@@ -1,7 +1,7 @@
 import React from "react";
 import Card from '../../components/Card/index';
 import './indez.css';
-
+import Search from '../../components/InputSearch';
 export default function ListProduct () {
     const data = {
         name: " Carla Viviana Duran Mariota",
