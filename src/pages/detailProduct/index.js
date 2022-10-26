@@ -18,7 +18,7 @@ export default function Details () {
                         <Description detail={detail}/>
                     </div>
                     <div className="containerDetails">
-                        <Actions />
+                        <Actions  detail={detail}/>
                     </div>
                 </div>
             </div>
