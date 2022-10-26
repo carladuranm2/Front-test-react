@@ -5,14 +5,14 @@ import useListProduct from './hooks/useListProduct';
 import { useNavigate } from "react-router-dom";
 
 export default function ListProduct () {
-    const { product } = useListProduct();
+    const { product, filterProduct,setProduct } = useListProduct();
     let navigate = useNavigate();
     function getValueDetailId (id) {
         navigate(`/userDetail/${id}`);
     }
     return (
         <div>
-            <Search>
+            <Search filterProduct={filterProduct} setProduct={setProduct} >
             </Search>
             <div className="list-product">
                 {product.map(data => (

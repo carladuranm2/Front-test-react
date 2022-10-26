@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 export default function useListProduct () {
     const [product, setProduct] = useState([]);
+    const [filterProduct, setFilterProduct] = useState([]);
     useEffect(() => {
         getListProduct();
     }, []);
@@ -10,6 +11,7 @@ export default function useListProduct () {
             const response = await fetch('https://front-test-api.herokuapp.com/api/product');
             const parseResult = await response.json();
             setProduct(parseResult);
+            setFilterProduct(parseResult);
             if (response) {
                 console.log("Response code 200, OK!");
             }
@@ -18,6 +20,8 @@ export default function useListProduct () {
         }
     }
     return {
-        product
+        product,
+        filterProduct,
+        setProduct
     }
 }
