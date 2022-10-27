@@ -3,25 +3,28 @@ import Description from "./components/description";
 import useDetailProduct from './hooks/useDetailProduct';
 import Actions from './components/actions/index';
 import './index.css';
+import Loader from '../../components/loader/index'
 
 export default function Details () {
-    const { detail } = useDetailProduct();
-    console.log(detail, "detailproduct");
+    const { detail, load } = useDetailProduct();
     return (
         <div>
-            <div className="container-details" >
+            {load ? <div className='container-load'>
+                <Loader></Loader>
+            </div> : <div className="container-details" >
                 <div className="containerDetails containerImage">
                     <img className="image-container" src={detail.imgUrl} alt="detail" />
                 </div>
                 <div>
                     <div className="containerDetails">
-                        <Description detail={detail}/>
+                        <Description detail={detail} />
                     </div>
                     <div className="containerDetails">
-                        <Actions  detail={detail}/>
+                        <Actions detail={detail} />
                     </div>
                 </div>
-            </div>
+            </div>}
+
         </div>
     )
 }

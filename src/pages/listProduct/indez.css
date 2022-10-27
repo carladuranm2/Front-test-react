@@ -1,4 +1,4 @@
-.list-product{
+.list-product {
         display: grid;
         justify-content: center;
         grid-template-columns: repeat(4, 1fr);
@@ -7,7 +7,15 @@
         margin: 20px;
 }
 
-.container-input-search{
+.container-input-search {
         display: flex;
         justify-content: end;
+}
+
+.container-load{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
 }

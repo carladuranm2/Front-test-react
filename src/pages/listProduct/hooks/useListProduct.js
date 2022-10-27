@@ -6,6 +6,7 @@ import { findDataWithExpiration } from "../../../utils";
 export default function useListProduct () {
     const [product, setProduct] = useState([]);
     const [filterProduct, setFilterProduct] = useState([]);
+    const [load, setLoad]= useState(false);
     const dispatch = useDispatch()
     function setti() {
         const result = findDataWithExpiration('cantProdut')
@@ -19,21 +20,22 @@ export default function useListProduct () {
         setti()
     }, []);
     async function getListProduct () {
+        setLoad(true);
         try {
             const response = await fetch('https://front-test-api.herokuapp.com/api/product');
             const parseResult = await response.json();
             setProduct(parseResult);
             setFilterProduct(parseResult);
-            if (response) {
-                console.log("Response code 200, OK!");
-            }
+            setLoad(false);
         } catch (error) {
             console.log(error, " Error!");
+            setLoad(false);
         }
     }
     return {
         product,
         filterProduct,
-        setProduct
+        setProduct,
+        load
     }
 }

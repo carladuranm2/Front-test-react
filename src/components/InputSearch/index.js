@@ -10,7 +10,6 @@ export default function Search({
         let expresion = new RegExp(`${e.target.value.toUpperCase()}.*`, "i");
         let productFounds = filterProduct.filter(item => (expresion.test(item.brand) || expresion.test(item.model)));
         setProduct(productFounds);
-        console.log(productFounds, " productofound");
     }
 
     return (
