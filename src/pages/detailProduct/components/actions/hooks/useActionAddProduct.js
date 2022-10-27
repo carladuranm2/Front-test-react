@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addshopCar } from "../../../../../app/features/shopCar/shopCarSlice";
 export default function useActionAddProduct (detail) {
@@ -47,7 +47,7 @@ export default function useActionAddProduct (detail) {
                 body: JSON.stringify(formAddProduct)
             });
             const parseResult = await response.json();
-            console.log(await response.json(),":)");
+            console.log(parseResult,":)");
             dispatch(addshopCar(parseResult.count))
         } catch (error) {
             console.log(error, "Error!");

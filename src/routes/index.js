@@ -1,9 +1,8 @@
-import { createBrowserRouter } from 'react-router-dom';
 import ListProduct from '../pages/listProduct';
 import Details from '../pages/detailProduct';
 
 
-const router = createBrowserRouter([
+const router = [
     {
         path: '/',
         element: <ListProduct />,
@@ -12,6 +11,6 @@ const router = createBrowserRouter([
         path: '/userDetail/:id',
         element: <Details />,
     },
-]);
+];
 
 export default router;

@@ -1,14 +1,22 @@
 import './App.css';
-import { RouterProvider } from 'react-router';
 import router from './routes'
 import Header from './components/header';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 function App () {
   return (
-    <div>
-      <Header/>
-      <RouterProvider router={router} />
-    </div>
-  );
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        {router.map(route => (
+          <Route path={route.path} element={route.element}/>
+        ))}
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App;

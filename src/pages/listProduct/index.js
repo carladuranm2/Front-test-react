@@ -12,8 +12,10 @@ export default function ListProduct () {
     }
     return (
         <div>
+            <div className= "container-input-search">
             <Search filterProduct={filterProduct} setProduct={setProduct} >
             </Search>
+            </div>
             <div className="list-product">
                 {product.map(data => (
                     <Card key={data.id} data={data} getValueDetailId={getValueDetailId} />
