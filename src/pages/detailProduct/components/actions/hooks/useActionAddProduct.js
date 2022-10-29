@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addshopCar } from "../../../../../app/features/shopCar/shopCarSlice";
+import {baseUrl} from '../../../../../config/index';
 export default function useActionAddProduct (detail) {
     const dispatch = useDispatch()
     const [formAddProduct, setFormAddProduct] = useState(
@@ -11,7 +12,6 @@ export default function useActionAddProduct (detail) {
         }
     )
     function getDataFormSelect (event) {
-        console.log(event.target.value, "value");
         setFormAddProduct(
             {
                 ...formAddProduct,
@@ -21,7 +21,6 @@ export default function useActionAddProduct (detail) {
     }
     function submit (e) {
         e.preventDefault();
-        console.log(formAddProduct, "datos del form");
         addProduct();
     }
     useEffect(() => {
@@ -38,7 +37,7 @@ export default function useActionAddProduct (detail) {
     }, [detail?.id]);
     async function addProduct () {
         try {
-            const response = await fetch(`https://front-test-api.herokuapp.com/api/cart`, {
+            const response = await fetch( `${baseUrl}/cart`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
@@ -47,7 +46,6 @@ export default function useActionAddProduct (detail) {
                 body: JSON.stringify(formAddProduct)
             });
             const parseResult = await response.json();
-            console.log(parseResult,":)");
             dispatch(addshopCar(parseResult.count))
         } catch (error) {
             console.log(error, "Error!");

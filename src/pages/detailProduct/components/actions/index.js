@@ -5,7 +5,7 @@ export default function Actions ({
     detail
 }) {
 
-    const {addProduct,getDataFormSelect,submit} = useActionAddProduct(detail);
+    const { addProduct, getDataFormSelect, submit } = useActionAddProduct(detail);
 
     return (
         <div>

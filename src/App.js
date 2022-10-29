@@ -1,3 +1,4 @@
+import {useEffect} from 'react'
 import './App.css';
 import router from './routes'
 import Header from './components/header';
@@ -6,7 +7,21 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import { findDataWithExpiration } from './utils';
+import { setPredataCountCart } from './app/features/shopCar/shopCarSlice';
+import { useDispatch } from 'react-redux';
 function App () {
+  const dispatch = useDispatch()
+  function setti() {
+    const result = findDataWithExpiration('cantProdut')
+    if (result) {
+        dispatch(setPredataCountCart(result))
+    }
+}
+
+useEffect(() => {
+  setti()
+}, [])
   return (
     <BrowserRouter>
       <Header />

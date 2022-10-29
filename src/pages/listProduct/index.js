@@ -14,8 +14,7 @@ export default function ListProduct () {
     return (
         <div>
             <div className="container-input-search">
-                <Search filterProduct={productsCopy} setProduct={setProducts} >
-                </Search>
+                <Search filterProduct={productsCopy} setProduct={setProducts} />
             </div>
             {loading ? (
                 <div className='container-load'>

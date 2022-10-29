@@ -3,14 +3,13 @@ export function saveDataWithExpiration (key, value) {
     localStorage.setItem(key, JSON.stringify(data))
 }
 
-const ONE_HOUR_IN_MS = (1 * 60 * 60 * 1000)
-
-export function findDataWithExpiration (key, expirationTime = ONE_HOUR_IN_MS) {
+export function findDataWithExpiration (key) {
     const data = localStorage.getItem(key);
     const dataParse = JSON.parse(data)
     const today = new Date();
     if (dataParse) {
-        if (today - dataParse.expirationDate > expirationTime) {
+        const dataParseInDate = new Date(dataParse.expirationDate)
+        if (today - dataParseInDate > today.setHours(today.getHours() + 1)) {
             localStorage.removeItem(key);
             return null;
         } else {

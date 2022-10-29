@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react'
 import { useQueryClient } from 'react-query'
+import {baseUrl} from '../../../config/index';
 
 export default function useListProduct () {
     const [products, setProducts] = useState([])
@@ -7,7 +8,8 @@ export default function useListProduct () {
     const [loading, setLoading] = useState(false)
     const queryKey = 'products'
     const queryClient = useQueryClient()
-    const fetchProducts = () => fetch('https://front-test-api.herokuapp.com/api/product').then(res => res.json())
+
+    const fetchProducts = () => fetch(`${baseUrl}/product`).then(res => res.json())
     const getProducts = async () => {
         setLoading(true)
         try {
