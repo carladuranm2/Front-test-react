@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Loader from '../../components/loader';
 
 export default function ListProduct () {
-    const { product, filterProduct, setProduct, load } = useListProduct();
+    const { products, productsCopy, setProducts, loading } = useListProduct();
     let navigate = useNavigate();
     function getValueDetailId (id) {
         navigate(`/userDetail/${id}`);
@@ -14,17 +14,22 @@ export default function ListProduct () {
     return (
         <div>
             <div className="container-input-search">
-                <Search filterProduct={filterProduct} setProduct={setProduct} >
+                <Search filterProduct={productsCopy} setProduct={setProducts} >
                 </Search>
             </div>
-            {load ? <div className='container-load'>
-                <Loader></Loader>
-            </div> : <div className="list-product">
-                {product.map(data => (
-                    <Card key={data.id} data={data} getValueDetailId={getValueDetailId} />
-                ))}
-            </div>}
+            {loading ? (
+                <div className='container-load'>
+                    <Loader></Loader>
+                </div>
+            ) : (
+                <div className="list-product">
+                    {(products || []).map(data => (
+                        <Card key={data.id} data={data} getValueDetailId={getValueDetailId} />
+                    ))}
+                </div>
+            )}
 
         </div>
+
     )
 }
