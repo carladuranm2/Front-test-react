@@ -1,9 +1,9 @@
 import Card from '../../components/card/index';
-import './indez.css';
 import Search from '../../components/inputSearch';
 import useListProduct from './hooks/useListProduct';
 import { useNavigate } from "react-router-dom";
 import Loader from '../../components/loader';
+import './index.css';
 
 export default function ListProduct () {
     const { products, productsCopy, setProducts, loading } = useListProduct();
@@ -19,7 +19,7 @@ export default function ListProduct () {
             </div>
             {loading ? (
                 <div className='container-load'>
-                    <Loader></Loader>
+                    <Loader />
                 </div>
             ) : (
                 <div className="list-product">
